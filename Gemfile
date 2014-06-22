@@ -38,7 +38,7 @@ gem 'bcrypt', '~> 3.1.7'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-gem 'protected_attributes'
+# gem 'protected_attributes'
 gem 'redcarpet'
 gem 'foundation-rails'
 gem 'faker'
