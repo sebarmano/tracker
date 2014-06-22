@@ -10,6 +10,7 @@ class AssignmentsController < ApplicationController
   # GET /assignments/1
   # GET /assignments/1.json
   def show
+    session[:assignment_id] = @assignment.id
   end
 
   # GET /assignments/new
