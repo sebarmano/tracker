@@ -32,3 +32,10 @@ end
   teacher_id: 2
   )
 end
+
+CompletedAssignment.create(
+  user_id: 1,
+  assignments_id: 1,
+  url: "www.completed.com",
+  completed: false
+)
