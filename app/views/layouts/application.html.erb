@@ -12,14 +12,27 @@
   </head>
 
   <body>
-    <% if current_user %>
-      Logged in as <%= current_user.email %>
-      <%= link_to "Log Out", logout_path %>
-    <% else %>
-      <%= link_to "Sign Up", signup_path %>
-      <%= link_to "Log In", login_path %>
-    <% end %>    
+    <nav class="top-bar" data-topbar>
+  <ul class="title-area">
+    <li class="name">
+      <h1><a href="#">Homework Central</a></h1>
+    </li>
+  </ul>
 
+  <section class="top-bar-section">
+    <!-- Right Nav Section -->
+    <ul class="right">
+      <% if current_user %>
+        <li>Logged in as <%= current_user.email %></li>
+        <li><%= link_to "Log Out", logout_path %></li>
+      <% else %>
+          <li><%= link_to "Sign Up", signup_path %></li>
+          <li class="active"><%= link_to "Log In", login_path, class:"active" %></li>
+        <% end %>
+      </li>
+    </ul>
+  </section>
+</nav>
     <%= yield %>
     <%= javascript_include_tag "application" %>
   </body>
