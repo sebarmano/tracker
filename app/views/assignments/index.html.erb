@@ -1,3 +1,5 @@
+<p id="notice"><%= notice %></p>
+
 <h1>Listing assignments</h1>
 
 <table>
@@ -13,6 +15,7 @@
 
   <tbody>
     <% @assignments.each do |assignment| %>
+      <% if active?(assignment) || teacher? %>
       <tr>
         <td><%= assignment.title %></td>
         <td><%= assignment.description %></td>
@@ -24,6 +27,7 @@
         <td><%= link_to 'Destroy', assignment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
       </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>

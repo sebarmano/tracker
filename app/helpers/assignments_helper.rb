@@ -19,4 +19,8 @@ module AssignmentsHelper
 
     markdown.render(text).html_safe
   end
+
+  def active?(assignment)
+    assignment.date < DateTime.now
+  end
 end

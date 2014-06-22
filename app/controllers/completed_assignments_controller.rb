@@ -1,5 +1,7 @@
 class CompletedAssignmentsController < ApplicationController
   before_action :set_completed_assignment, only: [:show, :edit, :update, :destroy]
+  before_action :require_login
+
 
   # GET /completed_assignments
   # GET /completed_assignments.json
