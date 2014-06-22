@@ -42,3 +42,8 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'redcarpet'
 gem 'foundation-rails'
 gem 'faker'
+
+group :development do
+  gem "better_errors"
+  gem "binding_of_caller"
+end

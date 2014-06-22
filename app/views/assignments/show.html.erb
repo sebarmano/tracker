@@ -15,6 +15,11 @@
   <%= markdown(@assignment.description) %>
 
 <%= link_to 'Edit', edit_assignment_path(@assignment) %> |
-<%= link_to 'Back', assignments_path %>
+<%= link_to 'Back', assignments_path %> |
+<%= link_to 'Complete assignment', new_completed_assignment_path %>
+
+
 <%= session[:assignment_id] %>
+
+
 </div>
