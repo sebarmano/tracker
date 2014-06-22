@@ -18,10 +18,10 @@
     <%= f.hidden_field :assignments_id, value: session[:assignment_id] %>
   </div>
   <div class="field">
-    <%= f.label :url %><br>
-    <%= f.text_field :url %>
+    <%= f.label :url, "Github URL" %><br>
+    <%= f.url_field :url, placeholder: "Paste Github URL here" %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Submit Assignment for review" %>
   </div>
 <% end %>
