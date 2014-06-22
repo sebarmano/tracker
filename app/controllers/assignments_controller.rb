@@ -1,6 +1,6 @@
 class AssignmentsController < ApplicationController
   before_action :set_assignment, only: [:show, :edit, :update, :destroy]
-  before_action :verify_teacher, only: [:edit, :update, :destroy]
+  before_action :verify_teacher, only: [:new, :create, :edit, :update, :destroy]
 
   # GET /assignments
   # GET /assignments.json
@@ -12,6 +12,7 @@ class AssignmentsController < ApplicationController
   # GET /assignments/1.json
   def show
     session[:assignment_id] = @assignment.id
+    @students = User.where(teacher_id: session[:user_id])
   end
 
   # GET /assignments/new

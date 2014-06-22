@@ -14,12 +14,19 @@
 
   <%= markdown(@assignment.description) %>
 
-<%= link_to 'Edit', edit_assignment_path(@assignment) %> |
 <%= link_to 'Back', assignments_path %> |
-<%= link_to 'Complete assignment', new_completed_assignment_path %>
 
+<% if student? %>
+  <%= link_to 'Complete assignment', new_completed_assignment_path %>
+<% end %>
 
-<%= session[:assignment_id] %>
-
+<% if teacher? %>
+<ul>
+  <%= link_to 'Edit', edit_assignment_path(@assignment) %>
+  <% @students.each do |student| %>
+     <li><%= student.name %></li>
+  <% end %>
+</ul>
+<% end %>
 
 </div>

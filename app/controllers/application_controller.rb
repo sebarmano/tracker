@@ -2,6 +2,19 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
+  before_filter :require_login, :except => [:root, :signup, :login]
+
+  def root
+     redirect_to login_path
+  end
+
+  def signup
+     redirect_to signup_path
+  end
+
+  def login
+     redirect_to login_path
+  end
 
   private
 
@@ -13,7 +26,7 @@ class ApplicationController < ActionController::Base
   #   @current_assignment ||= Assignment.find(session[:assignment_id]) if session[:assignment_id]
   # end
 
-  helper_method :current_user
+  helper_method :current_user, :teacher?, :student?
 
 
   def teacher?
@@ -27,6 +40,12 @@ class ApplicationController < ActionController::Base
   def verify_teacher
     if student?
       redirect_to assignment_path, notice: "You must be a teacher to edit assignments"
+    end
+  end
+
+  def require_login
+    if !session[:user_id]
+      redirect_to root_path, notice: "Please sign up or login"
     end
   end
 end

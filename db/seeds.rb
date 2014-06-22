@@ -46,7 +46,7 @@ end
 5.times do
   Assignment.create(
     title: Faker::Company.name,
-    description: "#do this",
+    description: "##" + Faker::Company.catch_phrase,
     date: DateTime.now,
     due: DateTime.tomorrow
   )
