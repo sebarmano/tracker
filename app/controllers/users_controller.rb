@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   def new
     @user = User.new
+    @teachers = User.where(teacher_id: 1)
   end
 
   def create

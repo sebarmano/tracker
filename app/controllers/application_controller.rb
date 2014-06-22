@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
 
 
   def teacher?
-    User.find(session[:user_id]).teacher_id == 0
+    User.find(session[:user_id]).teacher_id == 1
   end
 
   def student?
