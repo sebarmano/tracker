@@ -6,9 +6,9 @@
   <thead>
     <tr>
       <th>Title</th>
-      <th>Description</th>
       <th>Date</th>
       <th>Due</th>
+      <th>Status</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -18,9 +18,13 @@
       <% if active?(assignment) || teacher? %>
       <tr>
         <td><%= assignment.title %></td>
-        <td><%= assignment.description %></td>
         <td><%= assignment.date %></td>
         <td><%= assignment.due %></td>
+
+        <td><%= status(assignment) %></td>
+
+
+
         <td><%= link_to 'Show', assignment %></td>
         <% if teacher? %>
         <td><%= link_to 'Edit', edit_assignment_path(assignment) %></td>

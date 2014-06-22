@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
   #   @current_assignment ||= Assignment.find(session[:assignment_id]) if session[:assignment_id]
   # end
 
-  helper_method :current_user, :teacher?, :student?
+  helper_method :current_user, :teacher?, :student?, :status
 
 
   def teacher?
@@ -35,4 +35,24 @@ class ApplicationController < ActionController::Base
       redirect_to root_path, notice: "Please sign up or login"
     end
   end
+
+  def completed?(assignment)
+    CompletedAssignment.where(user_id: session[:user_id], assignment_id: assignment.id, completed: true)
+  end
+
+  def for_review?(assignment)
+    CompletedAssignment.where(user_id: session[:user_id], assignment_id: assignment.id, completed: false)
+  end
+
+  def status(assignment)
+    if completed?(assignment)
+      return "Completed"
+    elsif for_review?(assignment)
+      return "Up for review"
+    else
+      return "Incomplete"
+    end
+  end
+
+
 end
