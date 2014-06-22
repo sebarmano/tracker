@@ -1,24 +1,19 @@
+<div class="container">
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
+<h1>
   <%= @assignment.title %>
-</p>
+</h1>
 
 <p>
-  <strong>Description:</strong>
-  <%= @assignment.description %>
+  <strong>Date Assigned:</strong>
+  <%= @assignment.date.to_formatted_s(:long_ordinal) %><br>
+  <strong>Due Date:</strong>
+  <%= @assignment.due.to_formatted_s(:long_ordinal) %>
 </p>
 
-<p>
-  <strong>Date:</strong>
-  <%= @assignment.date %>
-</p>
-
-<p>
-  <strong>Due:</strong>
-  <%= @assignment.due %>
-</p>
+  <%= markdown(@assignment.description) %>
 
 <%= link_to 'Edit', edit_assignment_path(@assignment) %> |
 <%= link_to 'Back', assignments_path %>
+</div>
