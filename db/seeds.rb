@@ -11,7 +11,8 @@
     name: Faker::Name.name,
     email: Faker::Internet.email,
     password: "12345",
-    password_confirmation: "12345")
+    password_confirmation: "12345",
+    teacher_id: 0)
 end
 
 5.times do
@@ -25,13 +26,23 @@ end
 
 5.times do
   User.create(
-  name: Faker::Name.name,
-  email: Faker::Internet.email,
-  password: "teacher2",
-  password_confirmation: "teacher2",
-  teacher_id: 2
+    name: Faker::Name.name,
+    email: Faker::Internet.email,
+    password: "teacher2",
+    password_confirmation: "teacher2",
+    teacher_id: 2
   )
 end
+
+5.times do
+  Assingment.create(
+    title: Faker::Company.name,
+    description: "#do this",
+    date: DateTime.now,
+    due: Datetime.tomorrow
+  )
+end
+
 
 CompletedAssignment.create(
   user_id: 1,
