@@ -37,13 +37,14 @@ class CompletedAssignmentsController < ApplicationController
         format.json { render json: @completed_assignment.errors, status: :unprocessable_entity }
       end
     end
+    @completed_assignment.update(completed: false)
   end
 
   # PATCH/PUT /completed_assignments/1
   # PATCH/PUT /completed_assignments/1.json
   def update
     respond_to do |format|
-      if @completed_assignment.update(completed_assignment_params)
+      if @completed_assignment.update(completed_assignment_edit_params)
         format.html { redirect_to @completed_assignment, notice: 'Completed assignment was successfully updated.' }
         format.json { render :show, status: :ok, location: @completed_assignment }
       else
@@ -71,6 +72,10 @@ class CompletedAssignmentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def completed_assignment_params
+      params.require(:completed_assignment).permit(:user_id, :assignments_id, :url)
+    end
+
+    def completed_assignment_edit_params
       params.require(:completed_assignment).permit(:user_id, :assignments_id, :url, :completed)
     end
 end

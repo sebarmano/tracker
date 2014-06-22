@@ -21,12 +21,25 @@
 <% end %>
 
 <% if teacher? %>
-<ul>
-  <%= link_to 'Edit', edit_assignment_path(@assignment) %>
+  <h3>Status</h2>
   <% @students.each do |student| %>
-     <li><%= student.name %></li>
+     <div><%= student.name %> -
+           <% submission1 = student_completed(student.id, @assignment.id) %>
+           <% if submission1.any? %> - Completed -
+           <%= link_to "Submission URL", submission1[0].url %>
+           <% end %>
+           <% submission2 = student_for_review(student.id, @assignment.id) %>
+           <% if submission2.any? %> - Up for review -
+           <%= link_to "Submission URL", submission2[0].url %>
+           <% end %>
+           <% if !submission1.any? && !submission2.any? %> Incomplete
+           <% end %>
+
+
+
+      </div>
   <% end %>
-</ul>
+
 <% end %>
 
 </div>
