@@ -10,5 +10,4 @@ class Assignment < ActiveRecord::Base
       errors.add(:assign_it_before_it_is_due, ", the assignment can't be due before it is assigned!")
     end
   end
-
 end
