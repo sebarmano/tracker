@@ -77,19 +77,26 @@ Assignment.create(
   due: DateTime.tomorrow
 )
 
-5.times do
+5.times do |i|
   Assignment.create(
     title: Faker::Company.name,
     description: "###" + Faker::Company.catch_phrase + Faker::Lorem.paragraph,
-    date: DateTime.now,
-    due: DateTime.tomorrow
+    date: DateTime.now + (i - 3).days,
+    due: DateTime.tomorrow + (i - 3).days
   )
 end
 
 
 CompletedAssignment.create(
-  user_id: 1,
+  user_id: 5,
   assignments_id: 1,
-  url: "www.completed.com",
+  url: "https://github.com/sebarmano/tracker",
+  completed: true
+)
+
+CompletedAssignment.create(
+  user_id: 5,
+  assignments_id: 3,
+  url: "https://github.com/sebarmano/tracker",
   completed: false
 )

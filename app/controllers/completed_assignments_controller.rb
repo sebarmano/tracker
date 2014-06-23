@@ -30,7 +30,7 @@ class CompletedAssignmentsController < ApplicationController
 
     respond_to do |format|
       if @completed_assignment.save
-        format.html { redirect_to @completed_assignment, notice: 'Completed assignment was successfully created.' }
+        format.html { redirect_to assignments_path, notice: 'Completed assignment was successfully created.' }
         format.json { render :show, status: :created, location: @completed_assignment }
       else
         format.html { render :new }
@@ -45,7 +45,7 @@ class CompletedAssignmentsController < ApplicationController
   def update
     respond_to do |format|
       if @completed_assignment.update(completed_assignment_edit_params)
-        format.html { redirect_to @completed_assignment, notice: 'Completed assignment was successfully updated.' }
+        format.html { redirect_to assignments_path, notice: 'Completed assignment was successfully updated.' }
         format.json { render :show, status: :ok, location: @completed_assignment }
       else
         format.html { render :edit }
@@ -67,7 +67,7 @@ class CompletedAssignmentsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_completed_assignment
-      @completed_assignment = CompletedAssignment.find(params[:id])
+      @completed_assignment = CompletedAssignment.where(assignments_id: params[:id]).first
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

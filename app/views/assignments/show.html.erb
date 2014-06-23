@@ -9,7 +9,7 @@
   <strong>Due:</strong>
   <%= @assignment.due.to_formatted_s(:long_ordinal) %><br>
   <strong>Hours Until Due:</strong>
-  <%= ((@assignment.due - DateTime.now)/3600).to_i %>
+  <%= (-(@assignment.due - DateTime.now)/3600).to_i %>
 </p>
 
   <%= markdown(@assignment.description) %>

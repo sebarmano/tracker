@@ -26,7 +26,7 @@
               <% if student? %>
                 <% if status(assignment)=="Up for review"%>
                 <td><span class="radius regular label">UP FOR REVIEW</span></td>
-                <% elsif status(assignment)=="Complete" %>
+                <% elsif status(assignment)=="Completed" %>
                 <td><span class="radius success label">COMPLETE</span></td>
                 <% elsif status(assignment)=="Incomplete" && past?(assignment) %>
                 <td><span class="radius alert label">INCOMPLETE</span></td>
