@@ -27,4 +27,6 @@ module AssignmentsHelper
   def past?(assignment)
     assignment.due < DateTime.now
   end
+
+  
 end

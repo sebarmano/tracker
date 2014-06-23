@@ -18,16 +18,14 @@
   <h3>Students</h3>
   <% @students.each do |student| %>
      <div><%= student.name %> |
-           <% submission1 = student_completed(student.id, @assignment.id) %>
-           <% if submission1.any? %> <span class="radius green label">COMPLETED</span>
-           <%= link_to "Submitted URL", submission1[0].url %>
-           <% end %>
-           <% submission2 = student_for_review(student.id, @assignment.id) %>
-           <% if submission2.any? %> <span class="radius regular label">UP FOR REVIEW</span>
-           <%= link_to "Submitted URL", submission2[0].url %> |
-           <%= link_to "Review", edit_completed_assignment_path %>
-           <% end %>
-           <% if !submission1.any? && !submission2.any? %> <span class="radius alert label">NOT SUBMITTED</span>
+           <% if @assignment.complete?(student) %>
+             <span class="radius success label">COMPLETE</span> |
+             <%= link_to "Submitted URL", @assignment.submission(student).url %>
+           <% elsif @assignment.for_review?(student) %>
+             <span class="radius regular label">UP FOR REVIEW</span> |
+             <%= link_to "Submitted URL", @assignment.submission(student).url %>
+           <% elsif @assignment.incomplete?(student) %>
+             <span class="radius alert label">NOT SUBMITTED</span>
            <% end %>
       </div>
   <% end %>
