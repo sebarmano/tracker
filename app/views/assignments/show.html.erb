@@ -14,33 +14,31 @@
 
   <%= markdown(@assignment.description) %>
 
-<%= link_to 'Back', assignments_path %> |
+
 
 <% if student? %>
   <%= link_to 'Complete assignment', new_completed_assignment_path %>
 <% end %>
 
 <% if teacher? %>
-  <h3>Status</h2>
+  <h3>Students</h3>
   <% @students.each do |student| %>
-     <div><%= student.name %> -
+     <div><%= student.name %> |
            <% submission1 = student_completed(student.id, @assignment.id) %>
-           <% if submission1.any? %> - Completed -
-           <%= link_to "Submission URL", submission1[0].url %>
+           <% if submission1.any? %> Completed |
+           <%= link_to "Submiitted URL", submission1[0].url %>
            <% end %>
            <% submission2 = student_for_review(student.id, @assignment.id) %>
-           <% if submission2.any? %> - Up for review -
-           <%= link_to "Submission URL", submission2[0].url %>
-           <%= link_to "Complete", edit_completed_assignment_path %>
+           <% if submission2.any? %> Up for review |
+           <%= link_to "Submitted URL", submission2[0].url %> |
+           <%= link_to "Review", edit_completed_assignment_path %>
            <% end %>
            <% if !submission1.any? && !submission2.any? %> Incomplete
            <% end %>
-
-
 
       </div>
   <% end %>
 
 <% end %>
-
+<br><%= link_to 'Assignments', assignments_path %>
 </div>
