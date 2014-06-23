@@ -19,10 +19,26 @@ User.create(
   User.create(
     name: Faker::Name.name,
     email: Faker::Internet.email,
-    password: "12345",
-    password_confirmation: "12345",
+    password: "1234",
+    password_confirmation: "1234",
     teacher_id: 1)
 end
+
+User.create(
+  name: "Sebastian Teacher",
+  email: "sebastian@teacher.com",
+  password: "1234",
+  password_confirmation: "1234",
+  teacher_id: 1
+)
+
+User.create(
+  name: "Sebastian Student",
+  email:"sebastian@student.com",
+  password:"1234",
+  password_confirmation:"1234",
+  teacher_id: 4
+)
 
 5.times do
   User.create(
@@ -30,7 +46,7 @@ end
     email: Faker::Internet.email,
     password: "teacher1",
     password_confirmation: "teacher1",
-    teacher_id: 2)
+    teacher_id: 4)
 end
 
 5.times do
@@ -46,7 +62,7 @@ end
 5.times do
   Assignment.create(
     title: Faker::Company.name,
-    description: "##" + Faker::Company.catch_phrase,
+    description: "###" + Faker::Company.catch_phrase, Faker::Lorem.paragraph
     date: DateTime.now,
     due: DateTime.tomorrow
   )

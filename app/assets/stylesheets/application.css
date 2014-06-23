@@ -20,3 +20,26 @@
    margin-left:150px;
    margin-right:150px;
  }
+
+.login {
+  background-image: url("code.jpg");
+  background-color: lightgrey;
+  height:700px;
+
+  a {
+    color: #008cba;
+  }
+}
+
+.dialog {
+  padding-top: 40px;
+}
+
+.wall {
+  background: url("white_wall_hash.png") repeat;
+  height: 700px;
+ }
+
+ a.button  {
+   color: white;
+ }
