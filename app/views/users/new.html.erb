@@ -1,44 +1,37 @@
-<div class="container signup">
-  <div class="row dialog">
-    <div class="large-4 columns panel">
+<h1>Sign Up</h1>
 
-      <h3>Sign Up</h3>
-
-      <%= form_for @user do |f| %>
-        <% if @user.errors.any? %>
-          <div class="error_messages">
-            <h2>Form is invalid</h2>
-            <ul>
-              <% @user.errors.full_messages.each do |messages| %>
-                <li><%= message %></li>
-              <% end %>
-            </ul>
-          </div>
+<%= form_for @user do |f| %>
+  <% if @user.errors.any? %>
+    <div class="error_messages">
+      <h2>Form is invalid</h2>
+      <ul>
+        <% @user.errors.full_messages.each do |messages| %>
+          <li><%= message %></li>
         <% end %>
-
-        <div class="field">
-          <%= f.label :name %><br />
-          <%= f.text_field :name %>
-        </div>
-        <div class="field">
-          <%= f.label :email %><br />
-          <%= f.email_field :email %>
-        </div>
-        <div class="field">
-          <%= f.label :password %><br />
-          <%= f.password_field :password %>
-        </div>
-        <div class="field">
-          <%= f.label :password_confirmation %><br />
-          <%= f.password_field :password_confirmation %>
-        </div>
-        <div class="field">
-          <%= f.label :teacher_id %><br />
-          <%= f.collection_select :teacher_id, @teachers, :id, :name %>
-        </div>
-
-        <div class="action"><%= f.submit "Sign Up" %></div>
-      <% end %>
+      </ul>
     </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
   </div>
-</div>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :password %><br />
+    <%= f.password_field :password %>
+  </div>
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation %>
+  </div>
+  <div class="field">
+    <%= f.label :teacher_id %><br />
+    <%= f.collection_select :teacher_id, @teachers, :id, :name %>
+  </div>
+
+  <div class="action"><%= f.submit "Sign Up" %></div>
+<% end %>

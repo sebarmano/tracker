@@ -19,9 +19,19 @@
   </div>
   <div class="field">
     <%= f.label :url, "Github URL" %><br>
+  </div>
+  <% if student? %>
+  <div class="field">
     <%= f.url_field :url, placeholder: "Paste Github URL here" %>
   </div>
   <div class="actions">
     <%= f.submit "Submit Assignment for review" %>
   </div>
+  <% end %>
+  <% if teacher? %>
+  <div>
+    Completed to specifications? <%= f.check_box :completed %><br>
+    <%= f.submit "Save" %><br>
+  </div>
+  <% end %>
 <% end %>

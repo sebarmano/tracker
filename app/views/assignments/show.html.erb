@@ -31,6 +31,7 @@
            <% submission2 = student_for_review(student.id, @assignment.id) %>
            <% if submission2.any? %> - Up for review -
            <%= link_to "Submission URL", submission2[0].url %>
+           <%= link_to "Complete", edit_completed_assignment_path %>
            <% end %>
            <% if !submission1.any? && !submission2.any? %> Incomplete
            <% end %>
