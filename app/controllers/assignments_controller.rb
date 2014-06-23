@@ -1,8 +1,7 @@
 class AssignmentsController < ApplicationController
+  before_filter :require_login
   before_action :set_assignment, only: [:show, :edit, :update, :destroy]
   before_action :verify_teacher, only: [:new, :create, :edit, :update, :destroy]
-  before_action :require_login
-  before_action :verify_active, only: [:show]
 
   # GET /assignments
   # GET /assignments.json
@@ -15,6 +14,7 @@ class AssignmentsController < ApplicationController
   def show
     session[:assignment_id] = @assignment.id
     @students = User.where(teacher_id: session[:user_id])
+
   end
 
   # GET /assignments/new
@@ -75,11 +75,5 @@ class AssignmentsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def assignment_params
       params.require(:assignment).permit(:title, :description, :date, :due)
-    end
-
-    def verify_active
-      if Assignment.find(params[:id]).date > DateTime.now && student?
-        redirect_to assignments_path, notice: "This assignment is not active yet."
-      end
     end
 end
