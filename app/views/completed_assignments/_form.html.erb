@@ -17,11 +17,9 @@
   <div class="field">
     <%= f.hidden_field :assignments_id, value: session[:assignment_id] %>
   </div>
-  <div class="field">
-    <%= f.label :url, "Github URL" %><br>
-  </div>
   <% if student? %>
   <div class="field">
+    <%= f.label :url, "Github URL" %><br>
     <%= f.url_field :url, placeholder: "Paste Github URL here" %>
   </div>
   <div class="actions">
@@ -31,7 +29,7 @@
   <% if teacher? %>
   <div>
     Completed to specifications? <%= f.check_box :completed %><br>
-    <%= f.submit "Save" %><br>
+    <%= f.submit "Approve" %>
   </div>
   <% end %>
 <% end %>
