@@ -23,4 +23,8 @@ module AssignmentsHelper
   def active?(assignment)
     assignment.date < DateTime.now
   end
+
+  def past?(assignment)
+    assignment.due < DateTime.now
+  end
 end

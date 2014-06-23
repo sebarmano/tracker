@@ -48,7 +48,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-
   def student_completed(student_id, assignment_id)
     CompletedAssignment.where(user_id: student_id, assignments_id: assignment_id, completed: true)
   end

@@ -24,12 +24,14 @@
               <td><%= assignment.date %></td>
               <td><%= assignment.due %></td>
               <% if student? %>
-                <% if status(assignment)=="Incomplete" %>
-                <td><span class="radius alert label">INCOMPLETE</span></td>
-                <% elsif status(assignment)=="Up for review"%>
+                <% if status(assignment)=="Up for review"%>
                 <td><span class="radius regular label">UP FOR REVIEW</span></td>
-                <% else %>
+                <% elsif status(assignment)=="Complete" %>
                 <td><span class="radius success label">COMPLETE</span></td>
+                <% elsif status(assignment)=="Incomplete" && past?(assignment) %>
+                <td><span class="radius alert label">INCOMPLETE</span></td>
+                <% else %>
+                <td><span class="radius secondary label">ACTIVE</span></td>
                 <% end %>
               <% end %>
               <td><%= link_to 'Show', assignment %></td>
