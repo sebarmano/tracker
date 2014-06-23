@@ -21,11 +21,11 @@
   </div>
   <div class="field">
     <%= f.label :date %><br>
-    <%= f.datetime_select :date %>
+    <%= f.datetime_select :date, default: DateTime.now.beginning_of_day %>
   </div>
   <div class="field">
     <%= f.label :due %><br>
-    <%= f.datetime_select :due %>
+    <%= f.datetime_select :due, default: DateTime.tomorrow.beginning_of_day + 6.hours %>
   </div>
   <div class="actions">
     <%= f.submit %>
