@@ -35,8 +35,8 @@ User.create(
 User.create(
   name: "Sebastian Student",
   email:"sebastian@student.com",
-  password:"1234",
-  password_confirmation:"1234",
+  password: "1234",
+  password_confirmation: "1234",
   teacher_id: 4
 )
 
@@ -80,7 +80,7 @@ Assignment.create(
 5.times do
   Assignment.create(
     title: Faker::Company.name,
-    description: "###" + Faker::Company.catch_phrase, Faker::Lorem.paragraph
+    description: "###" + Faker::Company.catch_phrase + Faker::Lorem.paragraph,
     date: DateTime.now,
     due: DateTime.tomorrow
   )
