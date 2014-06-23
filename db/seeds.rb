@@ -43,6 +43,24 @@ end
   )
 end
 
+Assignment.create(
+  title: 'Homework Tracker',
+  description: %&* Create an application to track homework assignments.
+* This application should have users, assignments, and completed assignments (turn-ins? This needs a decent name.)
+* An assignment has a title, description, assigned date, and due date. All of the above are required. The description is in Markdown and should render correctly.
+* Each user can complete each assignment, making a record of that completion.
+* Users have to be able to log in. You can make a simple login or use another gem if you think thats a good idea.
+* Each person has a page that shows their assignments and whether or not theyve completed each one.
+* Past due assignments are visually highlighted.
+* Assignments are not shown before their assigned date on each users page.
+* Completed assignments should have a text box to paste in their work or a URL that points to their work.
+* Bonus: Completed assignments can have comments on them.
+* Bonus: Use a before_action method to prevent people from seeing homework before its assigned date.
+* Bonus: Make teacher and student accounts. Teachers do not have to do homework; students cannot create homework. Teachers can see a list of all homework assigned and each persons completions.&,
+  date: DateTime.now,
+  due: DateTime.tomorrow
+)
+
 5.times do
   Assignment.create(
     title: Faker::Company.name,
